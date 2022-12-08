@@ -19,5 +19,7 @@ namespace Entities.Concrete
         public int Order { get; set; }
 
         public bool Status { get; set; }
+
+        public List<TrProduct> TrProducts { get; set; }
     }
 }

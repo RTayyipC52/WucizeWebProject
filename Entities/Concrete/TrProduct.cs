@@ -15,5 +15,8 @@ namespace Entities.Concrete
         public string TrProductName { get; set; }
 
         public string TrProductDescription { get; set; }
+
+        public int TrCategoryId { get; set; }
+        public TrCategory TrCategory { get; set; }
     }
 }
