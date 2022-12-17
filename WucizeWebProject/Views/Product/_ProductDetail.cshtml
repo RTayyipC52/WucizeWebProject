@@ -1,0 +1,29 @@
+﻿@using Entities.Concrete
+@model Product
+<div class="modal fade" id="DetailModal-@Model.ProductId" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="fa-solid fa-xmark close-modal" data-bs-dismiss="modal" aria-label="Close"></i>
+                <div class="img-area">
+                    <img class="card-img-top" src="https://localhost:7295/teknik-mulakat/Tasar%C4%B1m/img/@Model.ProductImage" alt="Card image cap">
+                </div>
+                <div class="name-price-area d-flex justify-content-between align-items-start">
+                    <h4>
+                        @Model.ProductName
+                    </h4>
+                    @*<span class="price">@Model.ProductId</span>*@
+                </div>
+                <div class="description">
+                    <p>
+                        @Model.ProductDescription
+                    </p>
+                </div>
+
+            </div>
+            <!--        <div class="modal-footer">
+                <button type="button" class="btn w-100" data-bs-dismiss="modal">KAPAT</button>
+            </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model AddCategoryImage
+<!-- Menülerin eklendiği alan -->
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <section class="contact-form">
+                <form id="form-add-contact" class="contact-input" asp-controller="Admin" asp-action="AddTrMenu" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Menü Ekle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label>Menü Adı</label>
+                                <input type="text" asp-for="CategoryName" id="CategoryName" name="CategoryName" class="contact-name form-control" placeholder="Menü Adı">
+                                <span class="error">Bu alan zorunlu</span>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Menü Resmi Seçiniz</label>
+                                    <input type="file" name="CategoryImage">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-12">
+                                <label>İçerik Türü</label>
+                                <input type="text" asp-for="ContentType" id="ContentType" name="ContentType" class="contact-name form-control" placeholder="Menü Açıklaması">
+                                <span class="error">Bu alan zorunlu</span>
+                            </div>
+
+                            <div class="form-group col-12">
+                                <label>Sıra</label>
+                                <input type="text" asp-for="Order" id="Order" name="Order" class="contact-name form-control" placeholder="Sıra">
+                                <span class="error">Bu alan zorunlu</span>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label class="d-block">Durum</label>
+                                <input type="checkbox" asp-for="Status" class="switch section-switch" data-reverse="" data-on-label="Aktif" data-off-label="Pasif" data-section-id="2" checked="checked" data-val="true" data-val-required="The ServicesStatus field is required." id="Status" name="Status" value="true" hidden="">
+                                <div class="btn-group" tabindex="0"><button is="1" type="button" tabindex="-1" class="btn btn-success">Aktif</button><button is="0" type="button" tabindex="-1" class="btn btn-danger">Pasif</button></div>
+                                <span class="error d-block">Bu alan zorunlu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group position-relative has-icon-left mb-0">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Menülerin eklendiği alan -->

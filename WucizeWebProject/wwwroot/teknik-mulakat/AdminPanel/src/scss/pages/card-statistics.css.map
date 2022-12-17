@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AASA,yDAAyD;AAGzD,MAAM,EAAE,SAAS,EAAE,KAAK;EACxB,AACE,KADG,CACH,wBAAwB,CAAA;IACtB,MAAM,EAAE,YAAY;GACrB",
+    "sources": [
+        "card-statistics.scss"
+    ],
+    "names": [],
+    "file": "card-statistics.css"
+}

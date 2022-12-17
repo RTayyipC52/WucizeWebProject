@@ -1,0 +1,147 @@
+﻿@model AddProductImage
+<!-- İçerik ekleme alanı -->
+<div class="modal fade pl-0" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <section class="contact-form">
+                <form id="form-add-contact" class="contact-input" asp-controller="Admin" asp-action="AddTrSlider" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Slider Oluştur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group col-md-12 mb-2">
+                                    <label>İçerik Başlığı</label>
+                                    <input type="text" asp-for="ProductName" id="ProductName" name="ProductName" class="form-control" placeholder="İçerik Başlığı(İngilizce)">
+                                    <span class="error">Bu alan zorunlu</span>
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <label>İçerik </label>
+                                    <textarea asp-for="ProductDescription" id="editor"></textarea>
+                                    <span class="error">Bu alan zorunlu</span>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Slider görseli seçiniz</label>
+                                        <input type="file" name="ProductImage">
+                                        <div id="ImageID-Area">
+                                            <input type="hidden" for="ImageID">
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-md" data-dismiss="modal" data-toggle="modal" data-target="#ImageGaleryList" data-input="ImageID">Görsel Seçiniz</button>
+                                    </div>
+
+                                    <div class="selectImage">
+                                        <div class="img-wrapper">
+                                            <img src="" alt="" class="img-fluid" style="max-width: 25rem; width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group position-relative has-icon-left mb-0">
+                            <button type="submit" class="btn btn-primary"><i class="la la-paper-plane-o d-block d-lg-none"></i> <span class="d-none d-lg-block">Kaydet</span></button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- İçerik ekleme alanı -->
+<!-- Eklenen resimler burada listeleniyor -->
+<div class="modal fade p-0" id="ImageGaleryList" tabindex="-1" role="dialog" aria-labelledby="ImageGaleryList" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <section class="contact-form">
+                <form id="form-edit-contact" class="contact-input">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ImageGaleryList">Galeri</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card-columns">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/c3f49bf9-7240-4da3-8597-fb8ec86c58ca.png" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/c3f49bf9-7240-4da3-8597-fb8ec86c58ca.png" data-toggle="modal" data-target="#exampleModalCenter ">
+                                            <div class="card-body p-1">
+                                                <p class="card-text">Lorem</p>
+                                                <hr>
+                                                <button type="button" class="btn btn-sm btn-icon btn-primary"><i class="la la-pencil-square"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                            <div class="card-body p-1">
+                                                <p class="card-text">Lorem</p>
+                                                <hr>
+                                                <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                            <div class="card-body p-1">
+                                                <p class="card-text">Lorem</p>
+                                                <hr>
+                                                <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                            <div class="card-body p-1">
+                                                <p class="card-text">Lorem</p>
+                                                <hr>
+                                                <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                            <div class="card-body p-1">
+                                                <p class="card-text">Lorem</p>
+                                                <hr>
+                                                <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group position-relative has-icon-left mb-0">
+                            <button type="button" id="edit-contact-item" class="btn btn-primary edit-contact-item" data-dismiss="modal"><i class="la la-paper-plane-o d-lg-none"></i> <span class="d-none d-lg-block">Kaydet</span></button>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-0">
+                            <button type="button" class="btn btn-success btn-md" data-dismiss="modal" data-toggle="modal" data-target="#AddImage"><i class="la la-plus"></i> Görsel Ekle</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- Eklenen resimler burada listeleniyor -->

@@ -1,0 +1,55 @@
+﻿@using Entities.Concrete
+@model TrCategory
+<!-- Menülerin düzenlendiği alan -->
+
+<div class="modal fade" id="EditContactModal-@Model.CategoryId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <section class="contact-form">
+                <form id="form-edit-contact" class="contact-input" asp-controller="Admin" asp-action="UpdateTrMenu" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Düzenleme</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label>Menü Adı</label>
+                                <input type="hidden" asp-for="CategoryId" id="CategoryId" name="CategoryId" class="contact-name form-control" placeholder="Menü Adı" value="@Model.CategoryId">
+                                <input type="hidden" asp-for="CategoryImage" id="CategoryImage" name="CategoryImage" class="contact-name form-control" placeholder="Menü Adı" value="@Model.CategoryImage">
+                                <input type="text" asp-for="TrCategoryName" id="TrCategoryName" name="TrCategoryName" class="contact-name form-control" placeholder="Menü Adı" value="@Model.TrCategoryName">
+                                <span class="error">Bu alan zorunlu</span>
+                            </div>
+                            <div class="form-group col-12">
+                                <label>İçerik Türü</label>
+                                <input type="text" asp-for="ContentType" id="ContentType" name="ContentType" class="contact-name form-control" placeholder="İçerik Türü" value="@Model.ContentType">
+                                <span class="error">Bu alan zorunlu</span>
+                            </div>
+                            <div class="form-group col-12">
+                                <label>Sıra</label>
+                                <input type="text" asp-for="Order" id="Order" name="Order" class="contact-name form-control" placeholder="Sıra" value="@Model.Order">
+                                <span class="error">Bu alan zorunlu</span>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label class="d-block">Durum</label>
+                                <input type="checkbox" asp-for="Status" class="switch section-switch" data-reverse="" data-on-label="Aktif" data-off-label="Pasif" data-section-id="2" checked="checked" data-val="true" data-val-required="The ServicesStatus field is required." id="Status" name="Status" value="@Model.Status" hidden="">
+                                <div class="btn-group" tabindex="0"><button is="1" type="button" tabindex="-1" class="btn btn-success">Aktif</button><button is="0" type="button" tabindex="-1" class="btn btn-danger">Pasif</button></div>
+                                <span class="error d-block">Bu alan zorunlu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group position-relative has-icon-left mb-0">
+                            <button type="submit" class="btn btn-primary"><i class="la la-paper-plane-o d-lg-none"></i> <span class="d-none d-lg-block">Kaydet</span></button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Menülerin düzenlendiği alan -->

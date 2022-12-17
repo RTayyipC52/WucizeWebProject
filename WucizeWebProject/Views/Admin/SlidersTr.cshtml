@@ -1,0 +1,472 @@
+﻿@using Entities.Concrete
+@model List<TrProduct>
+@{
+    ViewData["Title"] = "SlidersTr";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta name="author" content="Wucize">
+    <title>Wucize</title>
+    <link rel="apple-touch-icon" href="~/teknik-mulakat/AdminPanel/assets/images/logo-w.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/teknik-mulakat/AdminPanel/assets/images/logo-w.svg" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet" />
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/vendors/css/vendors.min.css" />
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/bootstrap-extended.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/colors.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/components.css" />
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/core/menu/menu-types/vertical-menu-modern.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/core/colors/palette-gradient.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/vendors/css/charts/morris.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/fonts/simple-line-icons/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/app-assets/css/core/colors/palette-gradient.css" />
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/teknik-mulakat/AdminPanel/assets/scss/style.css" />
+    <!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern content-detached-left-sidebar app-contacts  fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="content-detached-left-sidebar">
+
+    <!-- BEGIN: Main Menu-->
+
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
+                <li class="nav-item">
+                    <a href="/Admin/Index"><i class="la la-users"></i><span class="menu-title" data-i18n="Contacts">Menü Yönetimi</span></a>
+                </li>
+
+                <li class="nav-item"><a href="/Admin/Sliders"><i class="la la-briefcase"></i><span class="menu-title" data-i18n="Project">Slider Yönetimi</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-detached content-right">
+                <div class="content-body ml-0">
+                    <div class="content-overlay"></div>
+
+                    <section class="row all-contacts">
+                        <div class="col-12">
+                            <div class="card" style="overflow: hidden;">
+                                <div class="card-head">
+                                    <div class="card-header">
+                                        <h4 class="card-title"></h4>
+                                        <div class="heading-elements w-100 mt-0">
+                                            <div class="head-area d-flex justify-content-between w-100 align-items-center">
+                                                <div class="d-lg-block d-none">
+                                                    <span class="ml-5 language-title">İçerik Dili</span>
+                                                    <ul class="ml-5 d-flex list-unstyled  language">
+                                                        <li><a href="/Admin/SlidersTr" class="btn" data-language="pt">Türkçe</a></li>
+                                                        <li><a href="/Admin/Sliders" class="btn" data-language="en">İngilizce</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#exampleModalCenter "><i class="d-md-none d-block ft-plus white"></i>
+                                                    <span class="d-md-flex align-items-center d-none"><i class="ft-plus white" style="font-size: 1.5rem;"></i> Slider Ekle </span>
+                                                </button>
+                                            </div>
+
+                                            <!-- Eklenen resimler burada listeleniyor -->
+                                            <div class="modal fade p-0" id="ImageGaleryList" tabindex="-1" role="dialog" aria-labelledby="ImageGaleryList" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <section class="contact-form">
+                                                            <form id="form-edit-contact" class="contact-input">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ImageGaleryList">Galeri</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="card-columns">
+                                                                                <div class="card">
+                                                                                    <div class="card-content">
+                                                                                        <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/c3f49bf9-7240-4da3-8597-fb8ec86c58ca.png" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/c3f49bf9-7240-4da3-8597-fb8ec86c58ca.png" data-toggle="modal" data-target="#exampleModalCenter ">
+                                                                                        <div class="card-body p-1">
+                                                                                            <p class="card-text">Lorem</p>
+                                                                                            <hr>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-primary"><i class="la la-pencil-square"></i></button>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card">
+                                                                                    <div class="card-content">
+                                                                                        <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                                                                        <div class="card-body p-1">
+                                                                                            <p class="card-text">Lorem</p>
+                                                                                            <hr>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card">
+                                                                                    <div class="card-content">
+                                                                                        <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                                                                        <div class="card-body p-1">
+                                                                                            <p class="card-text">Lorem</p>
+                                                                                            <hr>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card">
+                                                                                    <div class="card-content">
+                                                                                        <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                                                                        <div class="card-body p-1">
+                                                                                            <p class="card-text">Lorem</p>
+                                                                                            <hr>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card">
+                                                                                    <div class="card-content">
+                                                                                        <img class="card-img-top gallery-image img-fluid" src="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" alt="" data-dismiss="modal" data-image="https://www.smiledesignhouse.com/uploads/73a925b7-beff-4b90-81cc-8fefe8a094a5.jpg" data-toggle="modal" data-target="#exampleModalCenter ">
+                                                                                        <div class="card-body p-1">
+                                                                                            <p class="card-text">Lorem</p>
+                                                                                            <hr>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#UpdateImage"><i class="la la-pencil-square"></i></button>
+                                                                                            <button type="button" class="btn btn-sm btn-icon btn-red"><i class="la la-trash"></i></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="form-group position-relative has-icon-left mb-0">
+                                                                        <button type="button" id="edit-contact-item" class="btn btn-primary edit-contact-item" data-dismiss="modal"><i class="la la-paper-plane-o d-lg-none"></i> <span class="d-none d-lg-block">Kaydet</span></button>
+                                                                    </div>
+                                                                    <div class="form-group position-relative has-icon-left mb-0">
+                                                                        <button type="button" class="btn btn-success btn-md" data-dismiss="modal" data-toggle="modal" data-target="#AddImage"><i class="la la-plus"></i> Görsel Ekle</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Eklenen resimler burada listeleniyor -->
+
+
+                                            <!-- Resim ekleme ve güncelleme modalları -->
+                                            <div class="modal fade p-0" id="AddImage" tabindex="-1" role="dialog" aria-labelledby="AddImage" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <section class="contact-form">
+                                                            <form id="form-edit-contact" class="contact-input">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="AddImage">Galeri</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-12">
+                                                                            <label>Görsel Ekleyiniz</label>
+                                                                            <div class="writeImageArea">
+                                                                                <img src="" class="img-fluid">
+                                                                            </div>
+                                                                            <div class="upload-main-wrapper">
+                                                                                <div class="upload-wrapper">
+                                                                                    <input type="file" id="upload-file">
+                                                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="224.3881704980842 176.8527621722847 221.13266283524905 178.8472378277154" width="221.13" height="178.85">
+                                                                                        <defs>
+                                                                                            <path d="M357.38 176.85C386.18 176.85 409.53 204.24 409.53 238.02C409.53 239.29 409.5 240.56 409.42 241.81C430.23 246.95 445.52 264.16 445.52 284.59C445.52 284.59 445.52 284.59 445.52 284.59C445.52 309.08 423.56 328.94 396.47 328.94C384.17 328.94 285.74 328.94 273.44 328.94C246.35 328.94 224.39 309.08 224.39 284.59C224.39 284.59 224.39 284.59 224.39 284.59C224.39 263.24 241.08 245.41 263.31 241.2C265.3 218.05 281.96 199.98 302.22 199.98C306.67 199.98 310.94 200.85 314.93 202.46C324.4 186.96 339.88 176.85 357.38 176.85Z" id="b1aO7LLtdW"></path>
+                                                                                            <path d="M306.46 297.6L339.79 297.6L373.13 297.6L339.79 255.94L306.46 297.6Z" id="c4SXvvMdYD"></path>
+                                                                                            <path d="M350.79 293.05L328.79 293.05L328.79 355.7L350.79 355.7L350.79 293.05Z" id="b11si2zUk"></path>
+                                                                                        </defs>
+                                                                                        <g>
+                                                                                            <g>
+                                                                                                <g>
+                                                                                                    <use xlink:href="#b1aO7LLtdW" opacity="1" fill="#ffffff" fill-opacity="1"></use>
+                                                                                                </g>
+                                                                                                <g>
+                                                                                                    <g>
+                                                                                                        <use xlink:href="#c4SXvvMdYD" opacity="1" fill="#363535" fill-opacity="1"></use>
+                                                                                                    </g>
+                                                                                                    <g>
+                                                                                                        <use xlink:href="#b11si2zUk" opacity="1" fill="#363535" fill-opacity="1"></use>
+                                                                                                    </g>
+                                                                                                </g>
+                                                                                            </g>
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                    <span class="file-upload-text">Upload File</span>
+                                                                                    <div class="file-success-text">
+                                                                                        <svg version="1.1" id="check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+                                                                                            <circle style="fill:rgba(0,0,0,0);stroke:#ffffff;stroke-width:10;stroke-miterlimit:10;" cx="49.799" cy="49.746" r="44.757" />
+                                                                                            <polyline style="fill:rgba(0,0,0,0);stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+                                                                                    27.114,51 41.402,65.288 72.485,34.205 " />
+                                                                                        </svg> <span>Successfully</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <span class="error">Bu alan zorunlu</span>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Galeri Seçiniz (Opsiyonel)</label>
+                                                                                <select class="form-control" data-val="true" data-val-required="The GalleryID field is required." id="GalleryID" name="GalleryID">
+                                                                                    <option value="0" selected="selected">Galeri Seçiniz</option>
+                                                                                    <option value="1">1</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Açıklama</label>
+                                                                                <input id="Detail" type="text" class="form-control" placeholder="Açıklama" data-val="true" data-val-length="Açıklama fazla uzun (Maksimum 70 karakter)" data-val-length-max="70" data-val-required="Açıklama girilmedi" maxlength="70" name="Detail" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="form-group position-relative has-icon-left mb-0">
+                                                                        <button type="button" id="edit-contact-item" class="btn btn-primary edit-contact-item" data-dismiss="modal"><i class="la la-paper-plane-o d-lg-none"></i> <span class="d-none d-lg-block">Kaydet</span></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </form>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade p-0" id="UpdateImage" tabindex="-1" role="dialog" aria-labelledby="UpdateImage" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <section class="contact-form">
+                                                            <form id="form-edit-contact" class="contact-input">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="UpdateImage">Galeri</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-12">
+                                                                            <label>Görsel Ekleyiniz</label>
+                                                                            <div class="writeImageArea">
+                                                                                <img src="" class="img-fluid">
+                                                                            </div>
+                                                                            <div class="upload-main-wrapper">
+                                                                                <div class="upload-wrapper">
+                                                                                    <input type="file" id="upload-file">
+                                                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="224.3881704980842 176.8527621722847 221.13266283524905 178.8472378277154" width="221.13" height="178.85">
+                                                                                        <defs>
+                                                                                            <path d="M357.38 176.85C386.18 176.85 409.53 204.24 409.53 238.02C409.53 239.29 409.5 240.56 409.42 241.81C430.23 246.95 445.52 264.16 445.52 284.59C445.52 284.59 445.52 284.59 445.52 284.59C445.52 309.08 423.56 328.94 396.47 328.94C384.17 328.94 285.74 328.94 273.44 328.94C246.35 328.94 224.39 309.08 224.39 284.59C224.39 284.59 224.39 284.59 224.39 284.59C224.39 263.24 241.08 245.41 263.31 241.2C265.3 218.05 281.96 199.98 302.22 199.98C306.67 199.98 310.94 200.85 314.93 202.46C324.4 186.96 339.88 176.85 357.38 176.85Z" id="b1aO7LLtdW"></path>
+                                                                                            <path d="M306.46 297.6L339.79 297.6L373.13 297.6L339.79 255.94L306.46 297.6Z" id="c4SXvvMdYD"></path>
+                                                                                            <path d="M350.79 293.05L328.79 293.05L328.79 355.7L350.79 355.7L350.79 293.05Z" id="b11si2zUk"></path>
+                                                                                        </defs>
+                                                                                        <g>
+                                                                                            <g>
+                                                                                                <g>
+                                                                                                    <use xlink:href="#b1aO7LLtdW" opacity="1" fill="#ffffff" fill-opacity="1"></use>
+                                                                                                </g>
+                                                                                                <g>
+                                                                                                    <g>
+                                                                                                        <use xlink:href="#c4SXvvMdYD" opacity="1" fill="#363535" fill-opacity="1"></use>
+                                                                                                    </g>
+                                                                                                    <g>
+                                                                                                        <use xlink:href="#b11si2zUk" opacity="1" fill="#363535" fill-opacity="1"></use>
+                                                                                                    </g>
+                                                                                                </g>
+                                                                                            </g>
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                    <span class="file-upload-text">Upload File</span>
+                                                                                    <div class="file-success-text">
+                                                                                        <svg version="1.1" id="check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+                                                                                            <circle style="fill:rgba(0,0,0,0);stroke:#ffffff;stroke-width:10;stroke-miterlimit:10;" cx="49.799" cy="49.746" r="44.757" />
+                                                                                            <polyline style="fill:rgba(0,0,0,0);stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+                                                                                    27.114,51 41.402,65.288 72.485,34.205 " />
+                                                                                        </svg> <span>Successfully</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <span class="error">Bu alan zorunlu</span>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Galeri Seçiniz (Opsiyonel)</label>
+                                                                                <select class="form-control" data-val="true" data-val-required="The GalleryID field is required." id="GalleryID" name="GalleryID">
+                                                                                    <option value="0" selected="selected">Galeri Seçiniz</option>
+                                                                                    <option value="1">1</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Açıklama</label>
+                                                                                <input id="Detail" type="text" class="form-control" placeholder="Açıklama" data-val="true" data-val-length="Açıklama fazla uzun (Maksimum 70 karakter)" data-val-length-max="70" data-val-required="Açıklama girilmedi" maxlength="70" name="Detail" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="form-group position-relative has-icon-left mb-0">
+                                                                        <button type="button" id="edit-contact-item" class="btn btn-primary edit-contact-item" data-dismiss="modal"><i class="la la-paper-plane-o d-lg-none"></i> <span class="d-none d-lg-block">Kaydet</span></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </form>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Resim ekleme ve güncelleme modalları -->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body card-dashboard dataTables_wrapper dt-bootstrap">
+
+                                        <div class="table-responsive">
+                                            <table id="users-contacts" class="table table-white-space table-bordered row-grouping display no-wrap icheck table-middle text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th style="width: 40%;">Ürün Adı</th>
+                                                        <th>Ürün Açıklaması</th>
+                                                        <th>Kategori</th>
+                                                        <th class="text-right">İşlemler</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach(var item in Model) {
+                                                        <tr>
+                                                        <td class="text-center">
+                                                            <span>@item.ProductId</span>
+                                                        </td>
+                                                            <td class="text-left">
+                                                                <div class="media">
+
+                                                                    <div class="media-body media-middle">
+                                                                        <a class="media-heading name">@item.TrProductName</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a class="fullname">@item.TrProductDescription</a>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a class="fullname">@item.TrCategory.TrCategoryName</a>
+                                                            </td>
+
+                                                        <td class="text-right">
+                                                            <a href="#" class="btn btn-icon btn-primary text-white edit"><i class="la la-sitemap"></i> 0</a>
+                                                                <a data-toggle="modal" data-target="@("#EditContactModal-"+item.ProductId)" data-url="@Url.Action($"UpdateTrSlider/{item.ProductId}")" class="btn btn-icon btn-info text-white edit"><i class="la la-pencil"></i></a>
+                                                            <a href="/Admin/DeleteTrSlider/@item.ProductId" class="btn btn-icon btn-danger text-white edit "><i class="la la-trash-o"></i></a>
+                                                            <span class="dropdown">
+                                                                <a id="btnSearchDrop2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-secondary dropdown-toggle dropdown-menu-right"></a>
+                                                                <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
+                                                                        <a data-toggle="modal" data-target="@("#EditContactModal-"+item.ProductId)" data-url="@Url.Action($"UpdateTrSlider/{item.ProductId}")" class="dropdown-item edit">
+                                                                            <i class="ft-edit-2"></i>
+                                                                        Düzenle</a>
+                                                                    <a href="/Admin/DeleteTrSlider/@item.ProductId" class="dropdown-item delete"><i class="ft-trash-2"></i> Sil</a>
+                                                                </span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                        @await Html.PartialAsync("_UpdateTrSlider.cshtml",item)
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @await Html.PartialAsync("_AddTrSlider", new AddProductImage())
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/vendors/js/tables/jquery.dataTables.min.js"></script>
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/vendors/js/extensions/jquery.raty.js"></script>
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/js/core/app-menu.js"></script>
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/js/scripts/pages/app-contacts.js"></script>
+    <!-- END: Page JS-->
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/vendors/js/ckeditor/ckeditor.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="~/teknik-mulakat/AdminPanel/app-assets/js/scripts/ckeditor/ckeditor.js"></script>
+    <!-- END: Page JS-->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+
+    <script src="~/teknik-mulakat/AdminPanel/assets/js/scripts.js"></script>
+
+</body>
+<!-- END: Body-->
+
+</html>

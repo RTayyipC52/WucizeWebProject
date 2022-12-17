@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WucizeWebProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WucizeWebProject.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
+
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav flex-row">
+                    <li class="nav-item mr-auto">
+                        <a class="navbar-brand" href="">
+                            <img class="brand-logo" alt="logo" src="~/teknik-mulakat/AdminPanel/assets/images/logo.png" />
+                            <h3 class="brand-text">Wucize</h3>
+                        </a>
+                    </li>
+
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-container content d-flex justify-content-center align-items-center">
+                <div class="w-panel d-flex align-items-center justify-content-center">
+                    <img src="~/teknik-mulakat/AdminPanel/assets/images/logo-w.svg" class="w-panel-logo" alt=""> <span>Panel</span>
+                </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-mobile">
+
+                    <ul class="nav navbar-nav float-right">
+                        <li class="dropdown dropdown-language nav-item d-lg-none d-block">
+                            <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-gb"></i><span class="selected-language"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                                <a class="dropdown-item" href="#" data-language="en"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#" data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#" data-language="pt"><i class="flag-icon flag-icon-pt"></i> Portuguese</a><a class="dropdown-item" href="#" data-language="de"><i class="flag-icon flag-icon-de"></i> German</a>
+                            </div>
+                        </li>
+
+                        <li class="dropdown dropdown-user nav-item">
+                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="~/teknik-mulakat/AdminPanel/assets/images/avatar.png" alt="avatar" /><i></i></span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" asp-controller="Login" asp-action="Logout"><i class="ft-power"></i> Logout</a>
+                            </div>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center align-items-center mr-auto">
+                            <a class="nav-link p-0 menu-toggle" href="#"><i class="ft-menu font-large-1"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span class="float-md-left d-block d-md-inline-block">
+                Copyright &copy; 2022
+                <a class="text-bold-800 grey darken-2" href="https://1.envato.market/modern_admin" target="_blank"></a>
+            </span><span class="float-md-right d-none d-lg-block">WUCİZE<span id="scroll-top"></span></span>
+        </p>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

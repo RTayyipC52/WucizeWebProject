@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAEE,YAFU,CACX,KAAK,CACJ,EAAE,AAAA,MAAM,CAAA;EACP,UAAU,EAAE,IAAI;CAChB",
+    "sources": [
+        "hospital.scss"
+    ],
+    "names": [],
+    "file": "hospital.css"
+}

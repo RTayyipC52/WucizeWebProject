@@ -14,6 +14,8 @@ namespace Entities.Concrete
 
         public string TrCategoryName { get; set; }
 
+        public string CategoryImage { get; set; }
+
         public int ContentType { get; set; }
 
         public int Order { get; set; }

@@ -9,5 +9,8 @@ namespace DataAccess.Abstract
 {
     public interface ITrProductDal : IGenericDal<TrProduct>
     {
+        List<TrProduct> GetProductWithCategory();
+        List<TrProduct> ListProductWithCategory(int id);
+        List<TrProduct> FindProduct(string a);
     }
 }

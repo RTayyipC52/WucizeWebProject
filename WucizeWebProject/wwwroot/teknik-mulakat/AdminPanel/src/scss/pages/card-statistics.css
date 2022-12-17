@@ -1,0 +1,7 @@
+/*========== card-statistics Background Image =========*/
+@media (max-width: 992px) {
+  .card .card-gradient-md-border {
+    border: 0 !important;
+  }
+}
+/*# sourceMappingURL=card-statistics.css.map */
